@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+
+  # frontend:
+  #    image: ghcr.io/malyadr/frontend:1
+  #    container_name: frotend
+  #    restart: always
+  #    ports: 
+  #      - 3000:3000
+
+  APIgateway:
+    image: ghcr.io/malyadr/apigate12:v1
+    container_name: api
+    restart: always
+    ports:
+      - 4000:4000
+  
+  job:
+    image: ghcr.io/malyadr/jobser12:v1
+    container_name: job
+    restart: always
+    ports:
+      - 4004:4004
+  
+
+  ServiceRegistry:
+    image: ghcr.io/malyadr/servicereg12:v1
+    container_name: service
+    restart: always
+    ports:
+      - 8761:8761
+  
+
+ 

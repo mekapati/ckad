@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: frontend
+    labels: 
+      role: frontend
+      env: demo 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+         role: frontend
+  template:
+     metadata: 
+        labels:
+          role: frontend
+     spec:
+        containers:
+         - name: frontend
+           image: malyadr/vote1:v1
+           ports:
+            - containerPort: 3000                  

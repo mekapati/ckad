@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+   name: my-pod
+spec: 
+  volumes: 
+    - name: my-volume
+      hostPath: 
+          path: /var
+          type: Directory
+  restartPolicy: Never 
+  containers: 
+     - name: nginx
+       image: nginx 
+       command: ['sh', '-c', 'echo learning volumes!!! > /tmp/k8s.txt && sleep 3600']
+       volumeMounts: 
+         - name: my-volume 
+           mountPath: /tmp            

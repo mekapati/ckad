@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+   name: pod1
+   labels: 
+     name: pod1 
+spec: 
+  containers: 
+     - name: pod1 
+       image: nginx 
+       command: ["/bin/sh", "-c", 'echo learning volumes!!! > /data/k8s.txt && sleep 3600']    
+       volumeMounts:   
+            - name: story-volume
+              mountPath:  /data
+  volumes:
+     - name: story-volume
+       persistentVolumeClaim:
+          claimName: my-pvc          
